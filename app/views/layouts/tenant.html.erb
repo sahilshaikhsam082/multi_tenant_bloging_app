@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @current_tenant.name %> Blog Platform</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1>Welcome to <%= @current_tenant.name %> Blogging Platform</h1>
+      <%= link_to 'Logout', logout_path, method: :delete %>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <p>&copy; <%= Time.current.year %> - Multi-Tenant Blog Platform</p>
+    </footer>
+  </body>
+</html>

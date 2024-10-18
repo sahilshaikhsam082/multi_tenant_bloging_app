@@ -1,0 +1,8 @@
+<h1><%= @blog_post.title %></h1>
+
+<p>Written by: <%= @blog_post.user.name %></p>
+<p><%= @blog_post.content %></p>
+
+<hr>
+<%= link_to 'Edit', edit_tenants_blog_post_path(@blog_post) %> |
+<%= link_to 'Back to Blog Posts', blog_posts_path %>

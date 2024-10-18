@@ -1,6 +1,9 @@
+# In config/routes.rb
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # constraints(subdomain: /.+/) do
+    namespace :tenants do
+      root to: 'blog_posts#index'  # Set the root route for tenants
+      resources :blog_posts
+    end
+  # end
 end
