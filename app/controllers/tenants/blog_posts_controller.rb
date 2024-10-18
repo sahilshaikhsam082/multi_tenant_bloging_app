@@ -4,11 +4,16 @@ module Tenants
     before_action :set_blog_post, only: %i[show edit update destroy]
 
     def index
-      @blog_posts = BlogPost.joins(blog: :tenant).where(blogs: { tenant_id: @current_tenant.id })
+      @blog_posts = BlogPost.joins(blog: :tenant).where(blogs: { tenant_id: 7})
     end
 
     def new
       @blog_post = @current_tenant.blogs.new
+    end
+    
+    def version_history
+      @blog_post = BlogPost.find(params[:id])
+      @versions = @blog_post.versions
     end
 
     def create

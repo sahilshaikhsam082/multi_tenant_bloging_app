@@ -6,4 +6,11 @@ class BlogPost < ApplicationRecord
   has_many :versions
   has_many :blog_post_tags
   has_many :tags, through: :blog_post_tags
+  after_save :create_version
+
+  private
+
+  def create_version
+    versions.create(content: content, user: user) if content_changed?
+  end
 end

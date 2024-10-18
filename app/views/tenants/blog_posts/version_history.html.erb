@@ -1,0 +1,23 @@
+<h1>Version History for "<%= @blog_post.title %>"</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Version</th>
+      <th>Content</th>
+      <th>Updated By</th>
+      <th>Updated At</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @versions.each_with_index do |version, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= version.content %></td>
+        <td><%= version.created_at.strftime("%Y-%m-%d %H:%M") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back to Blog Post', tenants_blog_post_path(@blog_post) %>
